@@ -38,7 +38,7 @@ export default class {
             try {
               return {
                 ...doc,
-                date: formatDate(doc.date),
+                date: formatDate(doc.date.sort((a, b) => new Date(b.date) - new Date(a.date))),
                 status: formatStatus(doc.status)
               }
             } catch(e) {
