@@ -15,6 +15,7 @@ export default class NewBill {
     this.billId = null
     new Logout({ document, localStorage, onNavigate })
   }
+  
   handleChangeFile = e => {
     e.preventDefault()
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
@@ -24,7 +25,8 @@ export default class NewBill {
     const email = JSON.parse(localStorage.getItem("user")).email
     formData.append('file', file)
     formData.append('email', email)
-
+    
+    // vérification du format du fichier en plus de la restriction dans l'input "file" de NewbillUI
     if(file.type.includes("image")) {
       this.store
         .bills()
@@ -42,9 +44,9 @@ export default class NewBill {
         }).catch(error => console.error(error))
     }
   }
+  
   handleSubmit = e => {
     e.preventDefault()
-    console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', e.target.querySelector(`input[data-testid="datepicker"]`).value)
     const email = JSON.parse(localStorage.getItem("user")).email
     const bill = {
       email,

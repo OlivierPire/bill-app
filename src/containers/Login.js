@@ -34,9 +34,9 @@ export default class Login {
         PREVIOUS_LOCATION = this.PREVIOUS_LOCATION
         this.document.body.style.backgroundColor="#fff"
       })
-
   }
 
+  // dans email et password : admin remplace employee
   handleSubmitAdmin = e => {
     e.preventDefault()
     const user = {

@@ -1,5 +1,5 @@
 import { ROUTES_PATH } from '../constants/routes.js'
-import { formatDate, formatStatus } from "../app/format.js"
+import { formatDate, formatStatus, formatDateTimestamp } from "../app/format.js"
 import Logout from "./Logout.js"
 
 export default class {
@@ -38,7 +38,8 @@ export default class {
             try {
               return {
                 ...doc,
-                date: formatDate(doc.date.sort((a, b) => new Date(b.date) - new Date(a.date))),
+                date: (doc.date),
+                timestamp: formatDateTimestamp(doc.date), 
                 status: formatStatus(doc.status)
               }
             } catch(e) {
@@ -47,12 +48,12 @@ export default class {
               console.log(e,'for',doc)
               return {
                 ...doc,
-                date: doc.date,
+                date: (doc.date),
+                timestamp: formatDateTimestamp(doc.date), 
                 status: formatStatus(doc.status)
               }
             }
           })
-          console.log('length', bills.length)
         return bills
       })
     }

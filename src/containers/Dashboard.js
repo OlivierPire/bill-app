@@ -72,7 +72,8 @@ export default class {
     this.document = document
     this.onNavigate = onNavigate
     this.store = store
-    $('#arrow-icon1').on("click", (e) => this.handleShowTickets(e, bills, 1)) // Ajout on
+    // Ajout on click
+    $('#arrow-icon1').on("click", (e) => this.handleShowTickets(e, bills, 1)) 
     $('#arrow-icon2').on("click",(e) => this.handleShowTickets(e, bills, 2))
     $('#arrow-icon3').on("click",(e) => this.handleShowTickets(e, bills, 3))
     new Logout({ localStorage, onNavigate })
@@ -145,7 +146,7 @@ export default class {
       this.counter ++
     }
 
-    // Ajout off click
+    // Ajout on/off click
     bills.forEach(bill => {
       $(`#open-bill${bill.id}`).off("click")
       $(`#open-bill${bill.id}`).on("click", (e) => this.handleEditTicket(e, bill, bills))

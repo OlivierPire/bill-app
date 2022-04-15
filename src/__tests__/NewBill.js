@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * @jest-environment jsdom
  */
@@ -9,10 +10,9 @@ import { localStorageMock } from "../__mocks__/localStorage.js"
 import { ROUTES, ROUTES_PATH } from "../constants/routes.js"
 import mockedBills from "../__mocks__/store"
 import Store from "../app/Store.js"
-import mockData from "../__mocks__/store";
 import Router from "../app/Router"
 
-jest.mock("../app/store", () => mockData)
+jest.mock("../app/store", () => mockedBills)
 
 
 describe("Given I am connected as an employee", () => {
@@ -66,6 +66,3 @@ describe("Given I am connected as an employee", () => {
     })
   })
 })
-
-
-
